@@ -8,6 +8,9 @@ jobs:
       - checkout
       - setup_remote_docker
       - run:
-          name: test command
-          command: |
-            echo $DOCKER_PASS| docker login -u $DOCKER_USER --password-stdin
+          name: login docker
+          command: echo $DOCKER_PASS| docker login -u $DOCKER_USER --password-stdin
+          name: build image
+          command: docker build -t $DOCKER_IMAGE .
+          name: push image
+          command: docker push $DOCKER_IMAGE
