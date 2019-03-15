@@ -12,3 +12,4 @@ jobs:
           command: |
             echo "test cicd"
             ls -l
+            docker images
