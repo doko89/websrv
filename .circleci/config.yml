@@ -1,21 +1,21 @@
 version: 2
 jobs:
   build:
-    machine: true
+    working_directory: /websrv
+    docker:
+      image: docker
     steps:
       - checkout
-      - docker build doko89/websrv .
+      - setup_remote_docker
+      - deploy:
+          name: deploy docker image
+          command: |
+            docker build -t $DOCKER_IMAGE .
+            docker login -u $DOCKER_USER -p $DOCKER_PASS
+            docker push $DOCKER_IMAGE  
 
-  push-image:
-    machine: true
-    steps:
-      - echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin
-      - docker push doko89/websrv
 workflows:
   version: 2
   build_and_push:
     jobs:
       - build
-      - push-image:
-          requires:
-            - build
