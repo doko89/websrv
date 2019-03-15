@@ -1,0 +1,23 @@
+version: 2
+jobs:
+  build:
+    docker: 
+  build:
+    machine: true
+    steps:
+      - checkout
+      - docker build --rm=false ${DOCKER_IMAGE} .
+
+  push-image:
+    machine: true
+    steps:
+      - echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin
+      - docker push ${DOCKER_IMAGE}
+workflows:
+  version: 2
+  build_and_push:
+    jobs:
+      - build
+      - push-image:
+          requires:
+            - build
