@@ -1,0 +1,10 @@
+add_header X-Frame-Options "SAMEORIGIN";
+add_header X-XSS-Protection "1; mode=block";
+add_header X-Content-Type-Options "nosniff";
+location / {
+	# Redirect everything that isn’t a real file to index.php
+	add_header Access-Control-Allow-Origin *;
+	try_files $uri $uri/ /index.php?$query_string;
+
+}
+
