@@ -9,13 +9,13 @@ jobs:
       - setup_remote_docker
       - run:
           name: login docker
-          command: echo $DOCKER_PASS| docker login -u $DOCKER_USER --password-stdin
+          command: echo $DOCKER_PASS| docker login -u $DOCKER_USER:$CIRCLE_BRANCH --password-stdin
       - run:
           name: build image
           command: docker build -t $DOCKER_IMAGE .
       - run:
           name: push image
-          command: docker push $DOCKER_IMAGE
+          command: docker push $DOCKER_IMAGE:$CIRCLE_BRANCH
     filtered:
       branches:
         only: 
