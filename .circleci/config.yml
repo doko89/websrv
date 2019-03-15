@@ -1,7 +1,7 @@
 version: 2
 jobs:
   build:
-    working_directory: /dockerapp
+    working_directory: /app
     docker:
       - image: docker
     steps:
@@ -11,3 +11,4 @@ jobs:
           name: test command
           command: |
             echo "test cicd"
+            ls -l
