@@ -4,7 +4,7 @@ jobs:
     machine: true
     steps:
       - checkout
-      - docker build --rm=false ${DOCKER_IMAGE} .
+      - docker build ${DOCKER_IMAGE} .
 
   push-image:
     machine: true
