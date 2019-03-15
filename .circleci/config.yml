@@ -18,4 +18,6 @@ jobs:
           command: docker push $DOCKER_IMAGE
     filtered:
       branches:
-        only: master
+        only: 
+          master
+          ayo
