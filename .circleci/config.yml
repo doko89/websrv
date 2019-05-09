@@ -12,11 +12,11 @@ jobs:
           command: echo $DOCKER_PASS| docker login -u $DOCKER_USER --password-stdin
       - run:
           name: build image
-          command: docker build -t $DOCKER_IMAGE:laravel .
+          command: docker build -t $DOCKER_IMAGE:yii .
       - run:
           name: push image
-          command: docker push $DOCKER_IMAGE:laravel
+          command: docker push $DOCKER_IMAGE:yii
     filtered:
       branches:
         only: 
-          laravel
+          yii
