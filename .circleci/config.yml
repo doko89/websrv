@@ -1,8 +1,8 @@
 version: 2
 jobs:
-  laravel:
+  build_laravel:
     working_directory: /app
-    build_docker:
+    docker:
       - image: docker
     steps:
       - checkout
