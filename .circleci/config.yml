@@ -48,6 +48,6 @@ workflows:
   build:
     jobs:
       - laravel
-      -yii
+      - yii
 
 
