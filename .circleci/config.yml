@@ -1,8 +1,8 @@
 version: 2
 jobs:
-  build:
+  laravel:
     working_directory: /app
-    docker:
+    build_docker:
       - image: docker
     steps:
       - checkout
@@ -21,7 +21,7 @@ jobs:
         only: 
           laravel
 
-  build:
+  build_yii:
     working_directory: /app
     docker:
       - image: docker
