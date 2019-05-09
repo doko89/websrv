@@ -1,6 +1,6 @@
 version: 2
 jobs:
-  build_laravel:
+  laravel:
     working_directory: /app
     docker:
       - image: docker
@@ -21,7 +21,7 @@ jobs:
         only: 
           laravel
 
-  build_yii:
+  yii:
     working_directory: /app
     docker:
       - image: docker
@@ -41,4 +41,13 @@ jobs:
       branches:
         only:
           yii
+
+
+workflows:
+  version: 2
+  build:
+    jobs:
+      - laravel
+      -yii
+
 
