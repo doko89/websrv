@@ -14,8 +14,8 @@ RUN apk add --no-cache composer nginx supervisor curl \
     echo "daemon off;" >> /etc/nginx/nginx.conf && \
     mkdir /run/nginx && \
     chown -R xfs /var/tmp/nginx && \
-    sed -i 's+nobody+xfs+g;s+;listen.group+listen.group+;s+;listen.owner+listen.owner+;s+127.0.0.1:9000+/run/php7.2-fpm.sock+' /etc/php7/php-fpm.d/www.conf \
-    sed -i 's+/var/log/nginx/error.log+/dev/stderr+;s+/var/log/nginx/access.log+/dev/stdout+' /etc/nginx/nginx.conf \ 
+    sed -i 's+nobody+xfs+g;s+;listen.group+listen.group+;s+;listen.owner+listen.owner+;s+127.0.0.1:9000+/run/php7.2-fpm.sock+' /etc/php7/php-fpm.d/www.conf && \
+    sed -i 's+/var/log/nginx/error.log+/dev/stderr+;s+/var/log/nginx/access.log+/dev/stdout+' /etc/nginx/nginx.conf && \
     echo 'access.log = /dev/stdout' >> /etc/php7/php-fpm.d/www.conf
 
 COPY config/supervisor /etc/supervisor.d
